@@ -9,6 +9,20 @@
     body {
       background-color: whitesmoke;
       font-family: sans-serif;
+      border: solid 1px black;
+      padding: 10px;
+      border-radius: 15px;
+    }
+    #quote{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: medium;
+      background-color: grey;
+      color: white;
+      padding: 20px;
+      width: 70%;
+    }
+    #attribution{
+      font-size: smaller;
     }
   </style>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -23,22 +37,16 @@
     let interior = (r/t + 1);
     let exponent = d*t;
 
-    console.log(interior);
-    console.log(exponent);
-    
     for (i = 0; i < exponent; i++){
       let accPeriod = i + 1;
       let calculatedInterest = interior ** (t * accPeriod);
-      console.log(`addedInterest = ${addedInterest}`);
       let calcValue = calculatedInterest * p + addedInterest;
-      console.log()
-      console.log(`Calculated Value: ${calcValue}`);
       let dataobj = {label: accPeriod, y: calcValue};
       addedInterest = calculatedInterest;
       calcData.push(dataobj);
     }
     
-    console.log(calcData);
+    ////////////CHART BUILDING //////////////
   var chart = new CanvasJS.Chart("chartContainer",
    {
     title: {text: "Accrued Interest over Time"},
@@ -61,10 +69,10 @@
 
 <body>
   <h1>EighthWonder</h1>
-  <p>"Compound interest is the eighth wonder of the world. He who understands it, earns it . . . he who doesn't . . . pays it"  --Albert Einstein</p>
-  <form onsubmit="calcInterest(principle.value, rate.value, duration.value, times.value)">
+  <p id="quote">"Compound interest is the eighth wonder of the world. He who understands it, earns it . . . he who doesn't . . . pays it"<br/> <span id="attribution"> --Albert Einstein</span></p>
+  <form name="parameters" onsubmit="calcInterest(principle.value, rate.value, duration.value, times.value)">
     <input name="principle" placeholder="principal" type="number"> 
-    <input name="rate" placeholder="annual interest rate (decimal)" type="number" min="0" step="any">
+    <input name="rate" placeholder="interest rate (decimal)" type="number" min="0" step="any">
     <input name="duration" placeholder="how many years you will invest" type="number">
     <select name="times">
       <option value="12">Monthly</option>
