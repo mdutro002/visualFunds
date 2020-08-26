@@ -1,0 +1,22 @@
+{
+  "name": "visualfunds",
+  "version": "1.0.0",
+  "description": "Mintbean hackathon entry",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdutro002/visualFunds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdutro002/visualFunds/issues"
+  },
+  "homepage": "https://github.com/mdutro002/visualFunds#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
