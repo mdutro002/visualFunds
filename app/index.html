@@ -17,38 +17,36 @@
   const calcInterest = (p, r, d, t) => {
     event.preventDefault();
     //A = P(1 + r/n)^(nt)
-    //TO DO - CALCULATE INTEREST IN LOOP, DISPLAY TOTAL AMOUNT ACCRUED FOR EACH CHART BAR.
 
-    //instantiate array to populate with interest objects
+    //this array holds all calculated interest accurals over time
     let calcData = [];
-    //get base of forumla built
-    let interior = r/t + 1;
+    //get base of formula built
+    let interior = (r/t + 1);
+    let exponent = d*t;
     console.log(interior);
+    console.log(exponent);
     // let base = interior.toFixed(2);
     // console.log(base);
     
-    for (i = 0; i < t; i++){
-      console.log(i + 1)
-      let calculatedVal = i + 1
-      let dataobj = {label: calculatedVal};
+    for (i = 0; i < exponent; i++){
+      let accPeriod = i + 1;
+      let calcValue = p * interior ** (d * i);
+      let dataobj = {label: accPeriod, y: calcValue};
       calcData.push(dataobj);
     }
     
     console.log(calcData);
   var chart = new CanvasJS.Chart("chartContainer",
    {
-		title: {text: "My First Chart in CanvasJS"},
-		data: [              
+    title: {text: "Accrued Interest over Time"},
+    axisY: {
+      title: "Dollars"
+    },
+		data: [    
         {
-          // Change type to "doughnut", "line", "splineArea", etc.
           type: "column",
-          dataPoints: [
-            { label: "apple",  y: 10  },
-            { label: "orange", y: 15  },
-            { label: "banana", y: 25  },
-            { label: "mango",  y: 30  },
-            { label: "grape",  y: 36  }
-          ]
+          legendText: "Interest Accrual Periods",
+          dataPoints: calcData
         }
 		]
 	});
