@@ -18,20 +18,23 @@
     event.preventDefault();
     //A = P(1 + r/n)^(nt)
 
-    //this array holds all calculated interest accurals over time
     let calcData = [];
-    //get base of formula built
+    let addedInterest = 0;
     let interior = (r/t + 1);
     let exponent = d*t;
+
     console.log(interior);
     console.log(exponent);
-    // let base = interior.toFixed(2);
-    // console.log(base);
     
     for (i = 0; i < exponent; i++){
       let accPeriod = i + 1;
-      let calcValue = p * interior ** (d * i);
+      let calculatedInterest = interior ** (t * accPeriod);
+      console.log(`addedInterest = ${addedInterest}`);
+      let calcValue = calculatedInterest * p + addedInterest;
+      console.log()
+      console.log(`Calculated Value: ${calcValue}`);
       let dataobj = {label: accPeriod, y: calcValue};
+      addedInterest = calculatedInterest;
       calcData.push(dataobj);
     }
     
@@ -60,7 +63,7 @@
   <h1>EighthWonder</h1>
   <p>"Compound interest is the eighth wonder of the world. He who understands it, earns it . . . he who doesn't . . . pays it"  --Albert Einstein</p>
   <form onsubmit="calcInterest(principle.value, rate.value, duration.value, times.value)">
-    <input name="principle" placeholder="principle" type="number"> 
+    <input name="principle" placeholder="principal" type="number"> 
     <input name="rate" placeholder="annual interest rate (decimal)" type="number" min="0" step="any">
     <input name="duration" placeholder="how many years you will invest" type="number">
     <select name="times">
