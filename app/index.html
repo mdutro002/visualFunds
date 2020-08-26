@@ -8,20 +8,33 @@
   <style>
     body {
       background-color: whitesmoke;
-      color: grey;
       font-family: sans-serif;
     }
   </style>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
   ////////////////////// MAIN CALCULATE FUNCTION //////////////////////////////
-  const calcInterest = (principle, rate, duration, times) => {
+  const calcInterest = (p, r, d, t) => {
     event.preventDefault();
     //A = P(1 + r/n)^(nt)
-    //Pemdas operations:
-    //divide the annual interest rate (r) by the number of times the interest is componded (n)
     //TO DO - CALCULATE INTEREST IN LOOP, DISPLAY TOTAL AMOUNT ACCRUED FOR EACH CHART BAR.
 
+    //instantiate array to populate with interest objects
+    let calcData = [];
+    //get base of forumla built
+    let interior = r/t + 1;
+    console.log(interior);
+    // let base = interior.toFixed(2);
+    // console.log(base);
+    
+    for (i = 0; i < t; i++){
+      console.log(i + 1)
+      let calculatedVal = i + 1
+      let dataobj = {label: calculatedVal};
+      calcData.push(dataobj);
+    }
+    
+    console.log(calcData);
   var chart = new CanvasJS.Chart("chartContainer",
    {
 		title: {text: "My First Chart in CanvasJS"},
@@ -48,7 +61,7 @@
 <body>
   <h1>EighthWonder</h1>
   <p>"Compound interest is the eighth wonder of the world. He who understands it, earns it . . . he who doesn't . . . pays it"  --Albert Einstein</p>
-  <form onsubmit="calcInterest(principle, rate, duration, times)">
+  <form onsubmit="calcInterest(principle.value, rate.value, duration.value, times.value)">
     <input name="principle" placeholder="principle" type="number"> 
     <input name="rate" placeholder="annual interest rate (decimal)" type="number" min="0" step="any">
     <input name="duration" placeholder="how many years you will invest" type="number">
