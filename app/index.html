@@ -24,6 +24,33 @@
     #attribution{
       font-size: smaller;
     }
+    #parameters{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 30%;
+    }
+    #parameters input{
+      margin: 5px;
+      padding: 5px 3px;
+      width: 100%;
+    }
+
+    label{
+      align-self: flex-start;
+    }
+
+    select{
+      width: 100%;
+      padding: 5px 3px;
+      margin-bottom: 15px;
+      margin-top: 5px;
+    }
+
+    button{
+      width: 100px;
+      align-self: center;
+    }
   </style>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
@@ -70,10 +97,14 @@
 <body>
   <h1>EighthWonder</h1>
   <p id="quote">"Compound interest is the eighth wonder of the world. He who understands it, earns it . . . he who doesn't . . . pays it"<br/> <span id="attribution"> --Albert Einstein</span></p>
-  <form name="parameters" onsubmit="calcInterest(principle.value, rate.value, duration.value, times.value)">
-    <input name="principle" placeholder="principal" type="number"> 
-    <input name="rate" placeholder="interest rate (decimal)" type="number" min="0" step="any">
-    <input name="duration" placeholder="how many years you will invest" type="number">
+  <form id="parameters" onsubmit="calcInterest(principle.value, rate.value, duration.value, times.value)">
+    <label for="principle">Principal</label>
+    <input name="principle" placeholder="2000" type="number"> 
+    <label for="rate">Interest Rate (decimal)</label>
+    <input name="rate" placeholder=".05" type="number" min="0" step="any">
+    <label for="duration">Duration of Investment (years)</label>
+    <input name="duration" placeholder="10" type="number">
+    <label for="times">Accural Periods</label>
     <select name="times">
       <option value="12">Monthly</option>
       <option value="4">Quarterly</option>
