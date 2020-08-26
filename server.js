@@ -1,17 +1,12 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 PORT = 3000;
 
-const calcInterest = (principle, interestrate, time) => {
-  //A = P(1 + r/n)^(nt)
-  //Pemdas operations:
-  //divide the annual interest rate (r) by the number of times the interest is componded (n)
-  //
-}
 
 app.get('/', (req, res) => {
-  res.sendFile('index.html');
+  res.sendFile(path.join(__dirname+'/index.html'));
 })
 
 app.listen(PORT, () => {
