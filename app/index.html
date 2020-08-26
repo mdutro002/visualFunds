@@ -6,24 +6,54 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="main.css">
-</head>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
   ////////////////////// MAIN CALCULATE FUNCTION //////////////////////////////
-  const calcInterest = (principle, interestrate, time) => {
+  const calcInterest = (principle, rate, duration, times) => {
     //A = P(1 + r/n)^(nt)
     //Pemdas operations:
     //divide the annual interest rate (r) by the number of times the interest is componded (n)
-    //
+    //TO DO - CALCULATE INTEREST IN LOOP, DISPLAY TOTAL AMOUNT ACCRUED FOR EACH CHART BAR.
   }
 
+  window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title: {text: "My First Chart in CanvasJS"},
+		data: [              
+        {
+          // Change type to "doughnut", "line", "splineArea", etc.
+          type: "column",
+          dataPoints: [
+            { label: "apple",  y: 10  },
+            { label: "orange", y: 15  },
+            { label: "banana", y: 25  },
+            { label: "mango",  y: 30  },
+            { label: "grape",  y: 36  }
+          ]
+        }
+		]
+	});
+	chart.render();
+  }
 </script>
+</head>
+
+
 <body>
   <h1>EighthWonder</h1>
-  <p>"Compound interest is the eighth wonder of the wold. He who understands it, earns it . . . he who doesn't . . . pays it"  --Albert Einstein</p>
-  <form>
-    <input name="principle" placeholder="principle"> 
-    <input name="annualInterest" placeholder="annual interest rate (decimal)">
-    <input name="investmentTime" placeholder="number of months investment">
+  <p>"Compound interest is the eighth wonder of the world. He who understands it, earns it . . . he who doesn't . . . pays it"  --Albert Einstein</p>
+  <form onsubmit="calcInterest(principle, rate, duration, times)">
+    <input name="principle" placeholder="principle" type="number"> 
+    <input name="rate" placeholder="annual interest rate (decimal)" type="number">
+    <input name="duration" placeholder="how many years you will invest" type="number">
+    <select name="times">
+      <option value="12">Monthly</option>
+      <option value="4">Quarterly</option>
+      <option value="1">Annually</option>
+    </select>
+    <button type="submit">Submit</button>
   </form>
+  <br><br>
+  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 </body>
 </html>
