@@ -4,9 +4,8 @@ const path = require('path');
 
 PORT = 3000;
 
-
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname+'/index.html'));
+  res.sendFile(path.join(__dirname,'app/index.html'));
 })
 
 app.listen(PORT, () => {
